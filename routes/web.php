@@ -1,16 +1,16 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\HangXeController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoaiXeController;
-use App\Http\Controllers\TinhTrangController;
-use App\Http\Controllers\XeMayController;
 use App\Http\Controllers\KhachHangController;
+use App\Http\Controllers\LoaiXeController;
 use App\Http\Controllers\QuanTriVienController;
+use App\Http\Controllers\TinhTrangController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\XeMayController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
@@ -21,10 +21,11 @@ Route::name('frontend.')->group(function () {
     Route::get('/home', [HomeController::class, 'getHome'])->name('home');
 
     // Trang xe máy
-    Route::get('/xe-may', [HomeController::class, 'getXeMay'])->name('xemay');
+    Route::get('/xe-may', [HomeController::class, 'getTatCaXeMay'])->name('xemay');
     Route::get('/xe-may/{tenloai_slug}', [HomeController::class, 'getXeMay'])->name('xemay.phanloai');
     Route::get('/xe-may/{tenloai_slug}/{tenxe_slug}', [HomeController::class, 'getXeMay_ChiTiet'])->name('xemay.chitiet');
-
+    Route::get('/xe-may-hang/{tenhang_slug}', [HomeController::class, 'getXeMayTheoHang'])
+        ->name('xemay.phanhang');
     // Liên hệ
     Route::get('/lien-he', [HomeController::class, 'getLienHe'])->name('lienhe');
 });
@@ -52,6 +53,8 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::get('/doi-mat-khau', [KhachHangController::class, 'getDoiMatKhau'])->name('doimatkhau');
     Route::post('/doi-mat-khau', [KhachHangController::class, 'postDoiMatKhau'])->name('doimatkhau');
 
+    Route::post('/xoa-tai-khoan', [KhachHangController::class, 'postXoaTaiKhoan'])->name('xoataikhoan');
+
     Route::post('/dang-xuat', [KhachHangController::class, 'postDangXuat'])->name('dangxuat');
 });
 
@@ -75,6 +78,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/hangxe/sua/{id}', [HangXeController::class, 'getSua'])->name('hangxe.sua');
     Route::post('/hangxe/sua/{id}', [HangXeController::class, 'postSua'])->name('hangxe.sua');
     Route::get('/hangxe/xoa/{id}', [HangXeController::class, 'getXoa'])->name('hangxe.xoa');
+    Route::post('/hangxe/nhap', [HangXeController::class, 'postNhap'])->name('hangxe.nhap');
+    Route::get('/hangxe/xuat', [HangXeController::class, 'getXuat'])->name('hangxe.xuat');
 
     // Quản lý Xe máy
     Route::get('/xemay', [XeMayController::class, 'getDanhSach'])->name('xemay');
@@ -83,6 +88,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/xemay/sua/{id}', [XeMayController::class, 'getSua'])->name('xemay.sua');
     Route::post('/xemay/sua/{id}', [XeMayController::class, 'postSua'])->name('xemay.sua');
     Route::get('/xemay/xoa/{id}', [XeMayController::class, 'getXoa'])->name('xemay.xoa');
+    Route::post('/xemay/nhap', [XeMayController::class, 'postNhap'])->name('xemay.nhap');
+    Route::get('/xemay/xuat', [XeMayController::class, 'getXuat'])->name('xemay.xuat');
 
     // Quản lý Tình trạng đơn hàng
     Route::get('/tinhtrang', [TinhTrangController::class, 'getDanhSach'])->name('tinhtrang');

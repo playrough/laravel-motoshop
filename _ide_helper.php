@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 12.41.1.
+ * Generated for Laravel 12.42.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1268,8 +1268,6 @@ namespace Illuminate\Support\Facades {
         /**
          * Define a contextual binding based on an attribute.
          *
-         * @param string $attribute
-         * @param \Closure $handler
          * @return void
          * @static
          */
@@ -1288,7 +1286,6 @@ namespace Illuminate\Support\Facades {
          * `has($id)` returning true does not mean that `get($id)` will not throw an exception.
          * It does however mean that `get($id)` will not throw a `NotFoundExceptionInterface`.
          *
-         * @return bool
          * @param string $id Identifier of the entry to look for.
          * @return bool
          * @static
@@ -1500,7 +1497,6 @@ namespace Illuminate\Support\Facades {
          * "Extend" an abstract type in the container.
          *
          * @param string $abstract
-         * @param \Closure $closure
          * @return void
          * @throws \InvalidArgumentException
          * @static
@@ -1577,7 +1573,6 @@ namespace Illuminate\Support\Facades {
          * Bind a new callback to an abstract's rebind event.
          *
          * @param string $abstract
-         * @param \Closure $callback
          * @return mixed
          * @static
          */
@@ -1607,8 +1602,6 @@ namespace Illuminate\Support\Facades {
         /**
          * Wrap the given closure such that its dependencies will be injected when executed.
          *
-         * @param \Closure $callback
-         * @param array $parameters
          * @return \Closure
          * @static
          */
@@ -1656,7 +1649,6 @@ namespace Illuminate\Support\Facades {
          *
          * @template TClass of object
          * @param string|class-string<TClass>|callable $abstract
-         * @param array $parameters
          * @return ($abstract is class-string<TClass> ? TClass : mixed)
          * @throws \Illuminate\Contracts\Container\BindingResolutionException
          * @static
@@ -1703,7 +1695,6 @@ namespace Illuminate\Support\Facades {
         /**
          * Resolve a dependency based on an attribute.
          *
-         * @param \ReflectionAttribute $attribute
          * @return mixed
          * @static
          */
@@ -1718,7 +1709,6 @@ namespace Illuminate\Support\Facades {
          * Register a new before resolving callback for all types.
          *
          * @param \Closure|string $abstract
-         * @param \Closure|null $callback
          * @return void
          * @static
          */
@@ -1733,7 +1723,6 @@ namespace Illuminate\Support\Facades {
          * Register a new resolving callback.
          *
          * @param \Closure|string $abstract
-         * @param \Closure|null $callback
          * @return void
          * @static
          */
@@ -1748,7 +1737,6 @@ namespace Illuminate\Support\Facades {
          * Register a new after resolving callback for all types.
          *
          * @param \Closure|string $abstract
-         * @param \Closure|null $callback
          * @return void
          * @static
          */
@@ -1762,8 +1750,6 @@ namespace Illuminate\Support\Facades {
         /**
          * Register a new after resolving attribute callback for all types.
          *
-         * @param string $attribute
-         * @param \Closure $callback
          * @return void
          * @static
          */
@@ -1926,7 +1912,6 @@ namespace Illuminate\Support\Facades {
         /**
          * Set the shared instance of the container.
          *
-         * @param \Illuminate\Contracts\Container\Container|null $container
          * @return \Illuminate\Contracts\Container\Container|static
          * @static
          */
@@ -1940,7 +1925,6 @@ namespace Illuminate\Support\Facades {
          * Determine if a given offset exists.
          *
          * @param string $key
-         * @return bool
          * @static
          */
         public static function offsetExists($key)
@@ -1954,7 +1938,6 @@ namespace Illuminate\Support\Facades {
          * Get the value at a given offset.
          *
          * @param string $key
-         * @return mixed
          * @static
          */
         public static function offsetGet($key)
@@ -1969,28 +1952,26 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $key
          * @param mixed $value
-         * @return void
          * @static
          */
         public static function offsetSet($key, $value)
         {
             //Method inherited from \Illuminate\Container\Container 
             /** @var \Illuminate\Foundation\Application $instance */
-            $instance->offsetSet($key, $value);
+            return $instance->offsetSet($key, $value);
         }
 
         /**
          * Unset the value at a given offset.
          *
          * @param string $key
-         * @return void
          * @static
          */
         public static function offsetUnset($key)
         {
             //Method inherited from \Illuminate\Container\Container 
             /** @var \Illuminate\Foundation\Application $instance */
-            $instance->offsetUnset($key);
+            return $instance->offsetUnset($key);
         }
 
             }
@@ -6172,12 +6153,13 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * @template TReturn of mixed
+         * 
          * Run the callback function with the given context values and restore the original context state when complete.
-         *
-         * @param callable $callback
+         * @param (callable(): TReturn) $callback
          * @param array<string, mixed> $data
          * @param array<string, mixed> $hidden
-         * @return mixed
+         * @return TReturn
          * @throws \Throwable
          * @static
          */
@@ -10171,6 +10153,7 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Http\Client\PendingRequest withMiddleware(callable $middleware)
      * @method static \Illuminate\Http\Client\PendingRequest withRequestMiddleware(callable $middleware)
      * @method static \Illuminate\Http\Client\PendingRequest withResponseMiddleware(callable $middleware)
+     * @method static \Illuminate\Http\Client\PendingRequest withAttributes(array $attributes)
      * @method static \Illuminate\Http\Client\PendingRequest beforeSending(callable $callback)
      * @method static \Illuminate\Http\Client\PendingRequest throw(callable|null $callback = null)
      * @method static \Illuminate\Http\Client\PendingRequest throwIf(callable|bool $condition)
@@ -10185,7 +10168,7 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Http\Client\Response|\GuzzleHttp\Promise\PromiseInterface delete(string $url, array|\JsonSerializable|\Illuminate\Contracts\Support\Arrayable $data = [])
      * @method static array pool(callable $callback, int|null $concurrency = null)
      * @method static \Illuminate\Http\Client\Batch batch(callable $callback)
-     * @method static \Illuminate\Http\Client\Response send(string $method, string $url, array $options = [])
+     * @method static \Illuminate\Http\Client\Response|\Illuminate\Http\Client\Promises\LazyPromise send(string $method, string $url, array $options = [])
      * @method static \GuzzleHttp\Client buildClient()
      * @method static \GuzzleHttp\Client createClient(\GuzzleHttp\HandlerStack $handlerStack)
      * @method static \GuzzleHttp\HandlerStack buildHandlerStack()
@@ -18607,6 +18590,40 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Execute a table builder callback if the given table has a given index.
+         *
+         * @param string $table
+         * @param string|array $index
+         * @param \Closure $callback
+         * @param string|null $type
+         * @return void
+         * @static
+         */
+        public static function whenTableHasIndex($table, $index, $callback, $type = null)
+        {
+            //Method inherited from \Illuminate\Database\Schema\Builder 
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+            $instance->whenTableHasIndex($table, $index, $callback, $type);
+        }
+
+        /**
+         * Execute a table builder callback if the given table doesn't have a given index.
+         *
+         * @param string $table
+         * @param string|array $index
+         * @param \Closure $callback
+         * @param string|null $type
+         * @return void
+         * @static
+         */
+        public static function whenTableDoesntHaveIndex($table, $index, $callback, $type = null)
+        {
+            //Method inherited from \Illuminate\Database\Schema\Builder 
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+            $instance->whenTableDoesntHaveIndex($table, $index, $callback, $type);
+        }
+
+        /**
          * Get the data type for the given column name.
          *
          * @param string $table
@@ -23167,6 +23184,322 @@ namespace Illuminate\Support\Facades {
             }
     }
 
+namespace Maatwebsite\Excel\Facades {
+    /**
+     */
+    class Excel {
+        /**
+         * @param object $export
+         * @param string|null $fileName
+         * @param string $writerType
+         * @param array $headers
+         * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+         * @throws \PhpOffice\PhpSpreadsheet\Exception
+         * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+         * @static
+         */
+        public static function download($export, $fileName, $writerType = null, $headers = [])
+        {
+            /** @var \Maatwebsite\Excel\Excel $instance */
+            return $instance->download($export, $fileName, $writerType, $headers);
+        }
+
+        /**
+         * @param string|null $disk Fallback for usage with named properties
+         * @param object $export
+         * @param string $filePath
+         * @param string|null $diskName
+         * @param string $writerType
+         * @param mixed $diskOptions
+         * @return bool
+         * @throws \PhpOffice\PhpSpreadsheet\Exception
+         * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+         * @static
+         */
+        public static function store($export, $filePath, $diskName = null, $writerType = null, $diskOptions = [], $disk = null)
+        {
+            /** @var \Maatwebsite\Excel\Excel $instance */
+            return $instance->store($export, $filePath, $diskName, $writerType, $diskOptions, $disk);
+        }
+
+        /**
+         * @param object $export
+         * @param string $filePath
+         * @param string|null $disk
+         * @param string $writerType
+         * @param mixed $diskOptions
+         * @return \Illuminate\Foundation\Bus\PendingDispatch
+         * @static
+         */
+        public static function queue($export, $filePath, $disk = null, $writerType = null, $diskOptions = [])
+        {
+            /** @var \Maatwebsite\Excel\Excel $instance */
+            return $instance->queue($export, $filePath, $disk, $writerType, $diskOptions);
+        }
+
+        /**
+         * @param object $export
+         * @param string $writerType
+         * @return string
+         * @static
+         */
+        public static function raw($export, $writerType)
+        {
+            /** @var \Maatwebsite\Excel\Excel $instance */
+            return $instance->raw($export, $writerType);
+        }
+
+        /**
+         * @param object $import
+         * @param string|\Symfony\Component\HttpFoundation\File\UploadedFile $filePath
+         * @param string|null $disk
+         * @param string|null $readerType
+         * @return \Maatwebsite\Excel\Reader|\Illuminate\Foundation\Bus\PendingDispatch
+         * @static
+         */
+        public static function import($import, $filePath, $disk = null, $readerType = null)
+        {
+            /** @var \Maatwebsite\Excel\Excel $instance */
+            return $instance->import($import, $filePath, $disk, $readerType);
+        }
+
+        /**
+         * @param object $import
+         * @param string|\Symfony\Component\HttpFoundation\File\UploadedFile $filePath
+         * @param string|null $disk
+         * @param string|null $readerType
+         * @return array
+         * @static
+         */
+        public static function toArray($import, $filePath, $disk = null, $readerType = null)
+        {
+            /** @var \Maatwebsite\Excel\Excel $instance */
+            return $instance->toArray($import, $filePath, $disk, $readerType);
+        }
+
+        /**
+         * @param object $import
+         * @param string|\Symfony\Component\HttpFoundation\File\UploadedFile $filePath
+         * @param string|null $disk
+         * @param string|null $readerType
+         * @return \Illuminate\Support\Collection
+         * @static
+         */
+        public static function toCollection($import, $filePath, $disk = null, $readerType = null)
+        {
+            /** @var \Maatwebsite\Excel\Excel $instance */
+            return $instance->toCollection($import, $filePath, $disk, $readerType);
+        }
+
+        /**
+         * @param \Illuminate\Contracts\Queue\ShouldQueue $import
+         * @param string|\Symfony\Component\HttpFoundation\File\UploadedFile $filePath
+         * @param string|null $disk
+         * @param string $readerType
+         * @return \Illuminate\Foundation\Bus\PendingDispatch
+         * @static
+         */
+        public static function queueImport($import, $filePath, $disk = null, $readerType = null)
+        {
+            /** @var \Maatwebsite\Excel\Excel $instance */
+            return $instance->queueImport($import, $filePath, $disk, $readerType);
+        }
+
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @param-closure-this static  $macro
+         * @return void
+         * @static
+         */
+        public static function macro($name, $macro)
+        {
+            \Maatwebsite\Excel\Excel::macro($name, $macro);
+        }
+
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void
+         * @throws \ReflectionException
+         * @static
+         */
+        public static function mixin($mixin, $replace = true)
+        {
+            \Maatwebsite\Excel\Excel::mixin($mixin, $replace);
+        }
+
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool
+         * @static
+         */
+        public static function hasMacro($name)
+        {
+            return \Maatwebsite\Excel\Excel::hasMacro($name);
+        }
+
+        /**
+         * Flush the existing macros.
+         *
+         * @return void
+         * @static
+         */
+        public static function flushMacros()
+        {
+            \Maatwebsite\Excel\Excel::flushMacros();
+        }
+
+        /**
+         * @param string $concern
+         * @param callable $handler
+         * @param string $event
+         * @static
+         */
+        public static function extend($concern, $handler, $event = 'Maatwebsite\\Excel\\Events\\BeforeWriting')
+        {
+            return \Maatwebsite\Excel\Excel::extend($concern, $handler, $event);
+        }
+
+        /**
+         * When asserting downloaded, stored, queued or imported, use regular expression
+         * to look for a matching file path.
+         *
+         * @return void
+         * @static
+         */
+        public static function matchByRegex()
+        {
+            /** @var \Maatwebsite\Excel\Fakes\ExcelFake $instance */
+            $instance->matchByRegex();
+        }
+
+        /**
+         * When asserting downloaded, stored, queued or imported, use regular string
+         * comparison for matching file path.
+         *
+         * @return void
+         * @static
+         */
+        public static function doNotMatchByRegex()
+        {
+            /** @var \Maatwebsite\Excel\Fakes\ExcelFake $instance */
+            $instance->doNotMatchByRegex();
+        }
+
+        /**
+         * @param string $fileName
+         * @param callable|null $callback
+         * @static
+         */
+        public static function assertDownloaded($fileName, $callback = null)
+        {
+            /** @var \Maatwebsite\Excel\Fakes\ExcelFake $instance */
+            return $instance->assertDownloaded($fileName, $callback);
+        }
+
+        /**
+         * @param string $filePath
+         * @param string|callable|null $disk
+         * @param callable|null $callback
+         * @static
+         */
+        public static function assertStored($filePath, $disk = null, $callback = null)
+        {
+            /** @var \Maatwebsite\Excel\Fakes\ExcelFake $instance */
+            return $instance->assertStored($filePath, $disk, $callback);
+        }
+
+        /**
+         * @param string $filePath
+         * @param string|callable|null $disk
+         * @param callable|null $callback
+         * @static
+         */
+        public static function assertQueued($filePath, $disk = null, $callback = null)
+        {
+            /** @var \Maatwebsite\Excel\Fakes\ExcelFake $instance */
+            return $instance->assertQueued($filePath, $disk, $callback);
+        }
+
+        /**
+         * @static
+         */
+        public static function assertQueuedWithChain($chain)
+        {
+            /** @var \Maatwebsite\Excel\Fakes\ExcelFake $instance */
+            return $instance->assertQueuedWithChain($chain);
+        }
+
+        /**
+         * @param string $classname
+         * @param callable|null $callback
+         * @static
+         */
+        public static function assertExportedInRaw($classname, $callback = null)
+        {
+            /** @var \Maatwebsite\Excel\Fakes\ExcelFake $instance */
+            return $instance->assertExportedInRaw($classname, $callback);
+        }
+
+        /**
+         * @param string $filePath
+         * @param string|callable|null $disk
+         * @param callable|null $callback
+         * @static
+         */
+        public static function assertImported($filePath, $disk = null, $callback = null)
+        {
+            /** @var \Maatwebsite\Excel\Fakes\ExcelFake $instance */
+            return $instance->assertImported($filePath, $disk, $callback);
+        }
+
+            }
+    }
+
+namespace Illuminate\Support {
+    /**
+     * @template TKey of array-key
+     * @template-covariant TValue
+     * @implements \ArrayAccess<TKey, TValue>
+     * @implements \Illuminate\Support\Enumerable<TKey, TValue>
+     */
+    class Collection {
+        /**
+         * @see \Maatwebsite\Excel\Mixins\DownloadCollectionMixin::downloadExcel()
+         * @param string $fileName
+         * @param string|null $writerType
+         * @param mixed $withHeadings
+         * @param array $responseHeaders
+         * @static
+         */
+        public static function downloadExcel($fileName, $writerType = null, $withHeadings = false, $responseHeaders = [])
+        {
+            return \Illuminate\Support\Collection::downloadExcel($fileName, $writerType, $withHeadings, $responseHeaders);
+        }
+
+        /**
+         * @see \Maatwebsite\Excel\Mixins\StoreCollectionMixin::storeExcel()
+         * @param string $filePath
+         * @param string|null $disk
+         * @param string|null $writerType
+         * @param mixed $withHeadings
+         * @static
+         */
+        public static function storeExcel($filePath, $disk = null, $writerType = null, $withHeadings = false)
+        {
+            return \Illuminate\Support\Collection::storeExcel($filePath, $disk, $writerType, $withHeadings);
+        }
+
+            }
+    }
+
 namespace Illuminate\Http {
     /**
      */
@@ -25292,6 +25625,56 @@ namespace  {
         {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
             return $instance->mergeConstraintsFrom($from);
+        }
+
+        /**
+         * @see \Maatwebsite\Excel\Mixins\DownloadQueryMacro::__invoke()
+         * @param string $fileName
+         * @param string|null $writerType
+         * @param mixed $withHeadings
+         * @static
+         */
+        public static function downloadExcel($fileName, $writerType = null, $withHeadings = false)
+        {
+            return \Illuminate\Database\Eloquent\Builder::downloadExcel($fileName, $writerType, $withHeadings);
+        }
+
+        /**
+         * @see \Maatwebsite\Excel\Mixins\StoreQueryMacro::__invoke()
+         * @param string $filePath
+         * @param string|null $disk
+         * @param string|null $writerType
+         * @param mixed $withHeadings
+         * @static
+         */
+        public static function storeExcel($filePath, $disk = null, $writerType = null, $withHeadings = false)
+        {
+            return \Illuminate\Database\Eloquent\Builder::storeExcel($filePath, $disk, $writerType, $withHeadings);
+        }
+
+        /**
+         * @see \Maatwebsite\Excel\Mixins\ImportMacro::__invoke()
+         * @param string $filename
+         * @param string|null $disk
+         * @param string|null $readerType
+         * @static
+         */
+        public static function import($filename, $disk = null, $readerType = null)
+        {
+            return \Illuminate\Database\Eloquent\Builder::import($filename, $disk, $readerType);
+        }
+
+        /**
+         * @see \Maatwebsite\Excel\Mixins\ImportAsMacro::__invoke()
+         * @param string $filename
+         * @param callable $mapping
+         * @param string|null $disk
+         * @param string|null $readerType
+         * @static
+         */
+        public static function importAs($filename, $mapping, $disk = null, $readerType = null)
+        {
+            return \Illuminate\Database\Eloquent\Builder::importAs($filename, $mapping, $disk, $readerType);
         }
 
         /**
@@ -28156,6 +28539,7 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
     class View extends \Illuminate\Support\Facades\View {}
     class Vite extends \Illuminate\Support\Facades\Vite {}
+    class Excel extends \Maatwebsite\Excel\Facades\Excel {}
 }
 
 

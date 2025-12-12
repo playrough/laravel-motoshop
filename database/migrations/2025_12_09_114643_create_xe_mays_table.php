@@ -11,8 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('xe_mays', function (Blueprint $table) {
+        Schema::create('xemay', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('loaixe_id')->constrained('loaixe');
+            $table->foreignId('hangxe_id')->constrained('hangxe');
+            $table->string('tenxe');
+            $table->string('tenxe_slug');
+            $table->integer('soluong');
+            $table->double('dongia');
+            $table->string('hinhanh')->nullable();
+            $table->text('mota')->nullable();
+
+            $table->string('dongco')->nullable();
+            $table->string('dungtich')->nullable();
+            $table->string('namsanxuat')->nullable();
+            $table->string('mausac')->nullable();
+
             $table->timestamps();
         });
     }
@@ -22,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('xe_mays');
+        Schema::dropIfExists('xemay');
     }
 };

@@ -14,10 +14,10 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- CSS -->
+    <!-- css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="{{ asset('public/vendor/font-awesome/css/all.min.css') }}" />
-    <!-- Scripts -->
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/all.min.css') }}" />
+    <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     @yield('javascript')
 </head>
@@ -40,32 +40,32 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.loaixe') }}">
-                                <i class="fa-light fa-fw fa-diagram-project"></i> Loại Xe
+                                <i class="fa-thin fa-tire-rugged"></i> Loại Xe
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.hangxe') }}">
-                                <i class="fa-light fa-fw fa-diagram-project"></i> Hãng Xe
+                                <i class="fa-thin fa-flag"></i> Hãng Xe
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.xemay') }}">
-                                <i class="fa-light fa-fw fa-diagram-project"></i> Xe Máy
+                                <i class="fa-thin fa-motorcycle"></i> Xe Máy
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.tinhtrang') }}">
-                                <i class="fa-light fa-fw fa-diagram-project"></i> Tình Trạng
+                                <i class="fa-thin fa-circle-check"></i> Tình Trạng
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.donhang') }}">
-                                <i class="fa-light fa-fw fa-diagram-project"></i> Đơn Hàng
+                                <i class="fa-thin fa-cart-flatbed-boxes"></i> Đơn Hàng
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.nguoidung') }}">
-                                <i class="fa-light fa-fw fa-diagram-project"></i> Tài Khoản
+                                <i class="fa-thin fa-user"></i> Tài Khoản
                             </a>
                         </li>
                     </ul>

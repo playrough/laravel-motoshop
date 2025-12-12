@@ -1,0 +1,64 @@
+:root {
+    /* | Purpose                 | Color           | Hex     | */
+    /* | ----------------------- | --------------- | ------- | */
+    /* | Background chính (body) | Very Light Gray | #F8F9FA | */
+    /* | Card / Section bg       | White           | #FFFFFF | */
+    /* | Text chính              | Dark Gray       | #212529 | */
+    /* | Text phụ / secondary    | Medium Gray     | #6C757D | */
+    /* | Border / divider        | Light Gray      | #DEE2E6 | */
+
+    /* | Purpose             | Color              | Hex                    | */
+    /* | ------------------- | ------------------ | ---------------------- | */
+    /* | Navbar bg           | White / Light Gray | #FFFFFF / #F8F9FA      | */
+    /* | Text navbar         | Dark Gray / Black  | #212529                | */
+    /* | Hover / active link | Accent             | #FF6F61 (peach-orange) | */
+
+    /* | Purpose            | Color         | Hex     | */
+    /* | ------------------ | ------------- | ------- | */
+    /* | Primary button     | Vivid Orange  | #FF6F61 | */
+    /* | Secondary button   | Dark Gray     | #495057 | */
+    /* | Hover primary      | Darker Orange | #E85C50 | */
+    /* | Disabled / outline | Light Gray    | #CED4DA | */
+
+    /* | Purpose          | Color         | Hex     | */
+    /* | ---------------- | ------------- | ------- | */
+    /* | Links            | Vivid Blue    | #3B82F6 | */
+    /* | Product price    | Red / Alert   | #DC3545 | */
+    /* | Badge / sale tag | Bright Yellow | #FFC107 | */
+
+    /* Color usage suggestion */
+    /* Background: #F8F9FA */
+    /* Card: #FFFFFF */
+    /* Text: #212529 (chính) / #6C757D (secondary) */
+    /* CTA / Button: #FF6F61 */
+    /* Link / Accent: #3B82F6 */
+    /* Sale / Price: #DC3545 */
+
+    --bg-main: #f8f9fa;
+    --bg-section: #ffffff;
+    --text-main: #212529;
+    --text-secondary: #212529;
+    --border: #dee2e6;
+
+    --bg-nav: #f8f9fa;
+    --text-nav: #212529;
+    --text-hover: #ff6f61;
+
+    --button-primary: #ff6f61;
+    --button-secondary: #495057;
+    --button-hover: #e85c50;
+
+    --link: #3b82f6;
+    --price: #dc3545;
+    --tag: #ffc107;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
+
+.navbar-custom {
+    background-color: var(--bg-nav) !important;
+    border-bottom: 1px solid var(--border);
+}

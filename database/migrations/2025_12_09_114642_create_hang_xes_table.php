@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('tenhang');
             $table->string('tenhang_slug');
-            $table->string('logo')->nullable();
+            $table->string('hinhanh')->nullable();
             $table->timestamps();
         });
     }
