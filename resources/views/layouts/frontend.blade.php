@@ -49,9 +49,14 @@
                     <li class="nav-item mx-1"><a class="nav-link active" href="{{ route('frontend.home') }}">Trang
                             chủ</a></li>
                     <li class="nav-item mx-1"><a class="nav-link" href="{{ route('frontend.xemay') }}">Xe máy</a></li>
-                    <li class="nav-item mx-1"><a class="nav-link" href="#">Tin tức</a></li>
-                    <li class="nav-item mx-1"><a class="nav-link" href="{{ route('frontend.lienhe') }}">Liên hệ</a></li>
+                    <li class="nav-item mx-1"><a class="nav-link" href="{{ route('frontend.danhgia') }}">Đánh giá</a>
+                    </li>
+                    <li class="nav-item mx-1"><a class="nav-link" href="{{ route('frontend.lienhe') }}">Liên hệ</a>
+                    </li>
+                    <li class="nav-item mx-1"><a class="nav-link" href="{{ route('frontend.tuyendung') }}">Tuyển
+                            dụng</a>
                     <li class="nav-item mx-1"><a class="nav-link" href="{{ route('user.hoso') }}">Tài khoản</a></li>
+                    </li>
                 </ul>
 
                 <!-- ACCOUNT Ở CUỐI -->
@@ -106,7 +111,7 @@
                 <!-- Cột 1: Thông tin liên hệ -->
                 <div class="col-md-3">
                     <h5 class="fw-bold mb-3">Liên hệ</h5>
-                    <p class="mb-1"><i class="fa-light fa-location-dot"></i> 123 Nguyễn Trãi, Hà Nội</p>
+                    <p class="mb-1"><i class="fa-light fa-location-dot"></i> 123 Long Xuyên, An Giang</p>
                     <p class="mb-1"><i class="fa-light fa-phone"></i> <a href="tel:0123456789">0123 456 789</a></p>
                     <p class="mb-1"><i class="fa-light fa-envelope"></i> <a
                             href="mailto:support@motoshop.com">support@motoshop.com</a></p>
@@ -132,7 +137,7 @@
                     <h5 class="fw-bold mb-3">Kết nối & Thanh toán</h5>
 
                     <!-- Social Media -->
-                    <div class="mb-3">
+                    <div class="my-3">
                         <a href="#" class="text-dark me-2 fs-5"><i class="fab fa-facebook"></i></a>
                         <a href="#" class="text-dark me-2 fs-5"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="text-dark me-2 fs-5"><i class="fab fa-youtube"></i></a>
@@ -152,6 +157,7 @@
                         <img src="{{ asset('images/payment-methods/apple-pay-light-mode.svg') }}" alt="Apple Pay"
                             height="30">
                     </div>
+
                 </div>
 
                 <!-- Cột 4: Newsletter -->

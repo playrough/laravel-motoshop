@@ -63,7 +63,7 @@
 
 
 @section('content')
-    <div class="container">
+    <div class="container py-4">
         <div class="register-wrapper">
 
             <!-- TITLE -->
@@ -71,6 +71,14 @@
             <p class="text-center text-muted mb-4">
                 Nhanh chóng – Bảo mật – Dễ sử dụng
             </p>
+
+
+            @if (session('warning'))
+                <div class="alert d-flex alert-danger" role="alert">
+                    <i class="ci-banned fs-lg pe-1 mt-1 me-2"></i>
+                    <div>{{ session('warning') }}</div>
+                </div>
+            @endif
 
             <!-- FORM -->
             <form method="POST" action="{{ route('register') }}" class="needs-validation" novalidate>
@@ -136,7 +144,7 @@
 
             <!-- SOCIAL -->
             <div class="d-flex flex-column flex-sm-row gap-3">
-                <a href="#" class="btn btn-outline-secondary social-btn w-100">
+                <a href="{{ route('google.login') }}" class="btn btn-outline-secondary social-btn w-100">
                     <i class="fab fa-google me-2"></i> Google
                 </a>
                 <a href="#" class="btn btn-outline-secondary social-btn w-100">

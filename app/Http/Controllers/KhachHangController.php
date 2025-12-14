@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DatHangThanhCongEmail;
 use App\Models\DonHang;
 use App\Models\User;
 use App\Models\XeMay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class KhachHangController extends Controller
@@ -61,6 +63,9 @@ class KhachHangController extends Controller
         $dh->save();
 
         session(['last_order_id' => $dh->id]);
+
+        // Gởi email
+        Mail::to(Auth::user()->email)->send(new DatHangThanhCongEmail($dh));
 
         return redirect()->route('user.dathangthanhcong');
     }

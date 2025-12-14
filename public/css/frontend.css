@@ -1,39 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
 :root {
-    /* | Purpose                 | Color           | Hex     | */
-    /* | ----------------------- | --------------- | ------- | */
-    /* | Background chính (body) | Very Light Gray | #F8F9FA | */
-    /* | Card / Section bg       | White           | #FFFFFF | */
-    /* | Text chính              | Dark Gray       | #212529 | */
-    /* | Text phụ / secondary    | Medium Gray     | #6C757D | */
-    /* | Border / divider        | Light Gray      | #DEE2E6 | */
-
-    /* | Purpose             | Color              | Hex                    | */
-    /* | ------------------- | ------------------ | ---------------------- | */
-    /* | Navbar bg           | White / Light Gray | #FFFFFF / #F8F9FA      | */
-    /* | Text navbar         | Dark Gray / Black  | #212529                | */
-    /* | Hover / active link | Accent             | #FF6F61 (peach-orange) | */
-
-    /* | Purpose            | Color         | Hex     | */
-    /* | ------------------ | ------------- | ------- | */
-    /* | Primary button     | Vivid Orange  | #FF6F61 | */
-    /* | Secondary button   | Dark Gray     | #495057 | */
-    /* | Hover primary      | Darker Orange | #E85C50 | */
-    /* | Disabled / outline | Light Gray    | #CED4DA | */
-
-    /* | Purpose          | Color         | Hex     | */
-    /* | ---------------- | ------------- | ------- | */
-    /* | Links            | Vivid Blue    | #3B82F6 | */
-    /* | Product price    | Red / Alert   | #DC3545 | */
-    /* | Badge / sale tag | Bright Yellow | #FFC107 | */
-
-    /* Color usage suggestion */
-    /* Background: #F8F9FA */
-    /* Card: #FFFFFF */
-    /* Text: #212529 (chính) / #6C757D (secondary) */
-    /* CTA / Button: #FF6F61 */
-    /* Link / Accent: #3B82F6 */
-    /* Sale / Price: #DC3545 */
-
     --bg-main: #f8f9fa;
     --bg-section: #ffffff;
     --text-main: #212529;
@@ -56,9 +23,18 @@
 body {
     background-color: var(--bg-main);
     color: var(--text-main);
+    font-family: "Oswald", sans-serif;
 }
 
 .navbar-custom {
     background-color: var(--bg-nav) !important;
     border-bottom: 1px solid var(--border);
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    top: 0;
+}
+
+main {
+    margin-top: 57px;
 }

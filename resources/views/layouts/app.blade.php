@@ -11,8 +11,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&display=swap"
+        rel="stylesheet">
 
     <!-- css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
@@ -20,6 +23,13 @@
     <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     @yield('javascript')
+
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -64,6 +74,16 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.danhgia') }}">
+                                <i class="fa-thin fa-pen"></i> Đánh Giá
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.carousel') }}">
+                                <i class="fa-sharp fa-thin fa-eye"></i> Carousel
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.nguoidung') }}">
                                 <i class="fa-thin fa-user"></i> Tài Khoản
                             </a>
@@ -74,15 +94,15 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
+                            @if (Route::has('user.dangnhap'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">Đăng Nhập</a>
+                                    <a class="nav-link" href="{{ route('user.dangnhap') }}">Đăng Nhập</a>
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            @if (Route::has('user.dangky'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">Đăng Ký</a>
+                                    <a class="nav-link" href="{{ route('user.dangky') }}">Đăng Ký</a>
                                 </li>
                             @endif
                         @else

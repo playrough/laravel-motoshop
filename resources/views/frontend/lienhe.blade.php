@@ -60,7 +60,7 @@
 
                         <h5 class="fw-bold mb-3">Thông tin cửa hàng</h5>
 
-                        <p class="mb-2"><i class="fa-light fa-location-dot me-2"></i> 123 Nguyễn Trãi, Hà Nội</p>
+                        <p class="mb-2"><i class="fa-light fa-location-dot me-2"></i> 123 Long Xuyên, An Giang</p>
                         <p class="mb-2">
                             <i class="fa-light fa-phone me-2"></i>
                             <a href="tel:0123456789" class="text-decoration-none">0123 456 789</a>
@@ -80,9 +80,9 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-0">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.7335965234027!2d105.819454!3d21.003139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab3eb2e02d2d%3A0xa74c0c3a1ad2c7f!2zMTIzIE5ndXnhu4VuIFRy4bqhaSwgSG_DoG5nIE3hu7kgQ2jDrSBNaW5oLCBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1700000000000"
-                            width="100%" height="260" style="border:0;" allowfullscreen="" loading="lazy">
-                        </iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.6272952973704!2d105.42975861152559!3d10.371655789710866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310a731e7546fd7b%3A0x953539cd7673d9e5!2sAn%20Giang%20University!5e0!3m2!1sen!2snl!4v1765701867680!5m2!1sen!2snl"
+                            width="100%" height="260" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
 

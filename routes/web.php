@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\DanhGiaController;
 use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\HangXeController;
 use App\Http\Controllers\HomeController;
@@ -14,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// Google OAuth
+Route::get('/login/google', [HomeController::class, 'getGoogleLogin'])->name('google.login');
+Route::get('/login/google/callback', [HomeController::class, 'getGoogleCallback'])->name('google.callback');
+
 // Trang dành cho khách chưa đăng nhập
 Route::name('frontend.')->group(function () {
     // Trang chủ
@@ -24,10 +30,19 @@ Route::name('frontend.')->group(function () {
     Route::get('/xe-may', [HomeController::class, 'getTatCaXeMay'])->name('xemay');
     Route::get('/xe-may/{tenloai_slug}', [HomeController::class, 'getXeMay'])->name('xemay.phanloai');
     Route::get('/xe-may/{tenloai_slug}/{tenxe_slug}', [HomeController::class, 'getXeMay_ChiTiet'])->name('xemay.chitiet');
-    Route::get('/xe-may-hang/{tenhang_slug}', [HomeController::class, 'getXeMayTheoHang'])
-        ->name('xemay.phanhang');
+    Route::get('/xe-may-hang/{tenhang_slug}', [HomeController::class, 'getXeMayTheoHang'])->name('xemay.phanhang');
+
     // Liên hệ
     Route::get('/lien-he', [HomeController::class, 'getLienHe'])->name('lienhe');
+
+    // Tuyển dụng
+    Route::get('/tuyen-dung', [HomeController::class, 'getTuyenDung'])->name('tuyendung');
+
+    // Đánh giá
+    Route::get('/danh-gia', [HomeController::class, 'getDanhGia'])->name('danhgia');
+    Route::get('/danh-gia/{tenxe_slug}', [HomeController::class, 'getDanhGia'])->name('danhgia.xe');
+    Route::get('/danh-gia/chi-tiet/{slug}', [HomeController::class, 'getDanhGia_ChiTiet'])->name('danhgia.chitiet');
+
 });
 
 // Trang đăng ký/đăng nhập khách hàng
@@ -114,4 +129,21 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/nguoidung/sua/{id}', [UserController::class, 'getSua'])->name('nguoidung.sua');
     Route::post('/nguoidung/sua/{id}', [UserController::class, 'postSua'])->name('nguoidung.sua');
     Route::get('/nguoidung/xoa/{id}', [UserController::class, 'getXoa'])->name('nguoidung.xoa');
+
+    // Quản lý Đánh giá
+    Route::get('/danhgia', [DanhGiaController::class, 'getDanhSach'])->name('danhgia');
+    Route::get('/danhgia/them', [DanhGiaController::class, 'getThem'])->name('danhgia.them');
+    Route::post('/danhgia/them', [DanhGiaController::class, 'postThem'])->name('danhgia.them');
+    Route::get('/danhgia/sua/{id}', [DanhGiaController::class, 'getSua'])->name('danhgia.sua');
+    Route::post('/danhgia/sua/{id}', [DanhGiaController::class, 'postSua'])->name('danhgia.sua');
+    Route::get('/danhgia/xoa/{id}', [DanhGiaController::class, 'getXoa'])->name('danhgia.xoa');
+
+    // Quản lý Carousel
+    Route::get('/carousel', [CarouselController::class, 'getDanhSach'])->name('carousel');
+    Route::get('/carousel/them', [CarouselController::class, 'getThem'])->name('carousel.them');
+    Route::post('/carousel/them', [CarouselController::class, 'postThem'])->name('carousel.them');
+    Route::get('/carousel/sua/{id}', [CarouselController::class, 'getSua'])->name('carousel.sua');
+    Route::post('/carousel/sua/{id}', [CarouselController::class, 'postSua'])->name('carousel.sua');
+    Route::get('/carousel/xoa/{id}', [CarouselController::class, 'getXoa'])->name('carousel.xoa');
+
 });

@@ -78,7 +78,7 @@
 
 
 @section('content')
-    <div class="container">
+    <div class="container py-4">
         <div class="login-wrapper">
 
             <!-- TITLE -->
@@ -148,7 +148,8 @@
 
             <!-- SOCIAL -->
             <div class="d-flex flex-column flex-sm-row gap-3">
-                <a href="#" class="btn btn-outline-secondary social-btn w-100 d-flex align-items-center">
+                <a href="{{ route('google.login') }}"
+                    class="btn btn-outline-secondary social-btn w-100 d-flex align-items-center">
                     <i class="fab fa-google me-2"></i> Google
                 </a>
                 <a href="#" class="btn btn-outline-secondary social-btn w-100 d-flex align-items-center">

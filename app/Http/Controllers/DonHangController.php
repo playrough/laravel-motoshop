@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DonHang;
 use App\Models\TinhTrang;
+use App\Models\XeMay;
 use Illuminate\Http\Request;
 
 class DonHangController extends Controller
@@ -15,25 +16,36 @@ class DonHangController extends Controller
         return view('admin.donhang.danhsach', compact('donhang'));
     }
 
-    public function getThem() {}
+    public function getThem()
+    {
+        $tinhtrang = TinhTrang::all();
+        $xemay = XeMay::all();
+
+        return view('admin.donhang.them', compact('tinhtrang', 'xemay'));
+    }
 
     public function postThem(Request $request)
     {
         $request->validate([
             'user_id' => ['required', 'integer'],
+            'xemay_id' => ['required', 'integer'], // thêm validate cho xe máy
             'dienthoaigiaohang' => ['required', 'string', 'max:20'],
             'diachigiaohang' => ['required', 'string', 'max:255'],
-            'tinhtrang_id' => ['required'],
+            'tinhtrang_id' => ['required', 'integer'],
         ]);
+
+        $xemay = XeMay::findOrFail($request->xemay_id);
 
         $orm = new DonHang;
         $orm->user_id = $request->user_id;
+        $orm->xemay_id = $request->xemay_id; // gán id xe máy
         $orm->dienthoaigiaohang = $request->dienthoaigiaohang;
         $orm->diachigiaohang = $request->diachigiaohang;
         $orm->tinhtrang_id = $request->tinhtrang_id;
+        $orm->dongia = $xemay->dongia; // lấy từ xe máy
         $orm->save();
 
-        return redirect()->route('admin.donhang');
+        return redirect()->route('admin.donhang')->with('success', 'Thêm đơn hàng thành công!');
     }
 
     public function getSua($id)

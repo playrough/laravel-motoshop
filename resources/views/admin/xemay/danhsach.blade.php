@@ -19,17 +19,17 @@
         </div>
 
         <div class="card shadow-sm border-0">
+            {{ $xemay->links() }}
             <div class="card-body table-responsive p-0">
 
-                {{ $xemay->links() }}
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-light text-uppercase small">
                         <tr>
                             <th style="width:3%">#</th>
                             <th style="width:8%">Hình</th>
+                            <th style="width:12%">Tên xe</th>
                             <th style="width:8%">Loại</th>
                             <th style="width:8%">Hãng</th>
-                            <th style="width:12%">Tên xe</th>
                             <th style="width:4%">SL</th>
                             <th style="width:8%">Đơn giá</th>
                             <th style="width:8%">Động cơ</th>
@@ -49,16 +49,16 @@
                                     <img src="{{ asset('storage/' . $value->hinhanh) }}" width="80"
                                         class="img-thumbnail" />
                                 </td>
-                                <td class="fw-semibold">{{ $value->LoaiXe->tenloai }}</td>
-                                <td class="fw-semibold">{{ $value->HangXe->tenhang }}</td>
                                 <td class="fw-semibold">{{ $value->tenxe }}</td>
-                                <td class="fw-semibold">{{ $value->soluong }}</td>
-                                <td class="fw-semibold">{{ number_format($value->dongia) }}</td>
-                                <td class="fw-semibold">{{ $value->dongco }}</td>
-                                <td class="fw-semibold">{{ $value->dungtich }}</td>
-                                <td class="fw-semibold">{{ $value->namsanxuat }}</td>
-                                <td class="fw-semibold">{{ $value->mausac }}</td>
-                                <td class="fw-semibold">{{ $value->mota }}</td>
+                                <td>{{ $value->LoaiXe->tenloai }}</td>
+                                <td>{{ $value->HangXe->tenhang }}</td>
+                                <td>{{ $value->soluong }}</td>
+                                <td>{{ number_format($value->dongia) }}</td>
+                                <td>{{ $value->dongco }}</td>
+                                <td>{{ $value->dungtich }}</td>
+                                <td>{{ $value->namsanxuat }}</td>
+                                <td>{{ $value->mausac }}</td>
+                                <td>{{ $value->mota }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('admin.xemay.sua', ['id' => $value->id]) }}" class="text-warning">
                                         <i class="fa-light fa-edit fa-lg"></i>
@@ -76,8 +76,11 @@
                     </tbody>
                 </table>
 
-                {{ $xemay->links() }}
             </div>
+        </div>
+
+        <div class="mt-4">
+            {{ $xemay->links() }}
         </div>
 
     </div>

@@ -18,6 +18,10 @@ class XeMay extends Model
         'dongia',
         'hinhanh',
         'mota',
+        'dongco',
+        'dungtich',
+        'namsanxuat',
+        'mausac',
     ];
 
     public function LoaiXe(): BelongsTo
@@ -28,5 +32,10 @@ class XeMay extends Model
     public function HangXe(): BelongsTo
     {
         return $this->belongsTo(HangXe::class, 'hangxe_id', 'id');
+    }
+
+    public function danhGia()
+    {
+        return $this->hasMany(DanhGia::class, 'xemay_id');
     }
 }

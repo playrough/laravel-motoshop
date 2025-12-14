@@ -5,7 +5,7 @@
 
         <div class="card shadow-sm border-0">
             <div class="card-header bg-warning text-dark fw-semibold">
-                <i class="fa-light fa-edit me-2"></i> Sửa đơn hàng
+                <i class="fa-light fa-edit me-2"></i> Thêm đơn hàng
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.donhang.them') }}" method="post">
@@ -19,6 +19,26 @@
                         @error('user_id')
                             <div class="invalid-feedback"><strong>{{ $message }}</strong></div>
                         @enderror
+                    </div>
+
+
+                    <!-- Chọn Xe máy -->
+                    <div class="mb-3">
+                        <label class="form-label" for="xemay_id">Xe máy</label>
+                        <select class="form-select" id="xemay_id" name="xemay_id" required>
+                            <option value="">-- Chọn xe máy --</option>
+                            @foreach ($xemay as $xe)
+                                <option value="{{ $xe->id }}" data-dongia="{{ $xe->dongia }}">
+                                    {{ $xe->tenxe }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <!-- Hiển thị đơn giá -->
+                    <div class="mb-3">
+                        <label class="form-label" for="dongia">Đơn giá</label>
+                        <input type="text" class="form-control" id="dongia" readonly>
                     </div>
 
                     <!-- Điện thoại giao hàng -->
@@ -69,4 +89,16 @@
         </div>
 
     </div>
+
+
+    <script>
+        const selectXe = document.getElementById('xemay_id');
+        const inputDongia = document.getElementById('dongia');
+
+        selectXe.addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            const dongia = selectedOption.dataset.dongia || '';
+            inputDongia.value = dongia;
+        });
+    </script>
 @endsection

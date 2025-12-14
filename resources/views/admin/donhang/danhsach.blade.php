@@ -5,6 +5,9 @@
 
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2 class="fw-bold">Quản lý đơn hàng</h2>
+            <a href="{{ route('admin.donhang.them') }}" class="btn btn-primary shadow-sm">
+                <i class="fa-light fa-plus"></i> Thêm mới
+            </a>
         </div>
 
         <div class="card shadow-sm border-0">

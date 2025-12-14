@@ -52,7 +52,7 @@
                     </a>
 
                     <a href="https://zalo.me/0123456789" target="_blank" class="btn btn-outline-info px-4 py-2">
-                        Chat Zalo
+                        <i class="fa-light fa-message"></i> Chat Zalo
                     </a>
 
                 </div>
@@ -71,38 +71,62 @@
             </div>
         </div>
 
-        <!-- RELATED PRODUCTS -->
+
+
+        {{-- ĐÁNH GIÁ --}}
         <div class="mt-5">
-            <h3 class="fw-bold mb-4">Xe cùng loại</h3>
 
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+            <h4 class="fw-bold mb-3">Đánh giá từ khách hàng</h4>
 
-                @foreach ($goiy as $sp)
-                    <div class="col">
-                        <div class="card h-100 shadow-sm">
-
-                            <a
-                                href="{{ route('frontend.xemay.chitiet', [
-                                    'tenloai_slug' => $sp->LoaiXe->tenloai_slug,
-                                    'tenxe_slug' => $sp->tenxe_slug,
-                                ]) }}">
-                                <img src="{{ asset('storage/' . $sp->hinhanh) }}" class="card-img-top"
-                                    style="height: 180px; object-fit: cover;">
-                            </a>
-
-                            <div class="card-body">
-                                <h6 class="fw-semibold">{{ $sp->tenxe }}</h6>
-                                <span class="text-danger fw-bold">
-                                    {{ number_format($sp->dongia, 0, ',', '.') }} đ
-                                </span>
-                            </div>
-
-                        </div>
-                    </div>
-                @endforeach
-
+            {{-- Tổng sao --}}
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="fs-3 text-warning">
+                    @for ($i = 1; $i <= 5; $i++)
+                        @if ($i <= round($xemay->DanhGia->avg('sao')))
+                            ★
+                        @else
+                            ☆
+                        @endif
+                    @endfor
+                </div>
+                <span class="text-muted">
+                    {{ number_format($xemay->DanhGia->avg('sao'), 1) }}/5
+                    ({{ $xemay->DanhGia->count() }} đánh giá)
+                </span>
             </div>
-        </div>
 
-    </div>
-@endsection
+            <!-- RELATED PRODUCTS -->
+            <div class="mt-5">
+                <h3 class="fw-bold mb-4">Xe cùng loại</h3>
+
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+
+                    @foreach ($goiy as $sp)
+                        <div class="col">
+                            <div class="card h-100 shadow-sm">
+
+                                <a
+                                    href="{{ route('frontend.xemay.chitiet', [
+                                        'tenloai_slug' => $sp->LoaiXe->tenloai_slug,
+                                        'tenxe_slug' => $sp->tenxe_slug,
+                                    ]) }}">
+                                    <img src="{{ asset('storage/' . $sp->hinhanh) }}" class="card-img-top"
+                                        style="height: 180px; object-fit: cover;">
+                                </a>
+
+                                <div class="card-body">
+                                    <h6 class="fw-semibold">{{ $sp->tenxe }}</h6>
+                                    <span class="text-danger fw-bold">
+                                        {{ number_format($sp->dongia, 0, ',', '.') }} đ
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+            </div>
+
+        </div>
+    @endsection
